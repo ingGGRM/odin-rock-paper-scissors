@@ -1,32 +1,37 @@
-console.log("Hello People")
+console.log("WELCOME TO ROCK PAPER SCISSORS GAME")
 
-function computerPlay() {
-    let randNum = Math.floor(Math.random() * 3)
+function playRound(user) { // this function gets user option and manages the whole gameplay
+    // e.stopPropagation();
+    //let user = e.classList.value;
+
+    console.log("User: " + user);
     
-    return (randNum === 0) ? 'Rock': (randNum === 1) ? 'Paper': 'Scissors';
+    let cpu = computerPlay();
+    console.log("Cpu: " + cpu);
+
+    let result = match(cpu, user);
+    console.log((result != 'TIE') ? "!!! User " + result + " !!!" : "!!! Result was a TIE !!!");
+
+    return;
 }
 
-function userPlay() {
-    let option = prompt("Make your Choice (Rock = 1; Paper = 2; Scissors = 3): ")
+function computerPlay() { // this function gets a random play for cpu
+    let randNum = Math.floor(Math.random() * 3)
     
-    return (option == 1) ? 'Rock': (option == 2) ? 'Paper': 'Scissors';
+    return (randNum === 0) ? 'rock': (randNum === 1) ? 'paper': 'scissors';
 }
 
 function match(cpu, user) {
     let result = (cpu == user) ? "TIE":
-    (cpu == 'Rock') ? (user == 'Paper') ? 'WIN' : 'LOSE' :
-    (cpu == 'Paper') ? (user == 'Scissors') ? 'WIN' : 'LOSE' :
-    (cpu == 'Scissors') ? (user == 'Rock') ? 'WIN' : 'LOSE' : 'LOSE';
+    (cpu == 'rock') ? (user == 'paper') ? 'WIN' : 'LOSE' :
+    (cpu == 'paper') ? (user == 'scissors') ? 'WIN' : 'LOSE' :
+    (cpu == 'scissors') ? (user == 'rock') ? 'WIN' : 'LOSE' : 'LOSE';
 
     return result;
 }
 
-
-let cpuOpt = computerPlay();
-console.log("CPU play is: " + cpuOpt);
-
-userOpt = userPlay();
-console.log("USER play is: " + userOpt)
-
-let res = match(cpuOpt, userOpt);
-console.log((res === "TIE") ? "This match was a TIE" : "You " + res + " !!!");
+const buttons = document.querySelectorAll('button');
+// console.log(buttons);
+buttons.forEach(button => button.addEventListener('click', () => {
+    playRound(button.className);
+}));

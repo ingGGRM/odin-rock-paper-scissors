@@ -12,7 +12,7 @@ function playRound(user) { // this function gets user option and manages the who
     let result = match(cpu, user);
     console.log((result != 'TIE') ? "!!! User " + result + " !!!" : "!!! Result was a TIE !!!");
 
-    return;
+    return (result != 'TIE') ? "!!! User " + result + " !!!" : "!!! Result was a TIE !!!";
 }
 
 function computerPlay() { // this function gets a random play for cpu
@@ -32,6 +32,10 @@ function match(cpu, user) {
 
 const buttons = document.querySelectorAll('button');
 // console.log(buttons);
+
 buttons.forEach(button => button.addEventListener('click', () => {
-    playRound(button.className);
+    let output = playRound(button.className);
+    var myDiv = document.getElementsByClassName("result");
+    myDiv.innerText = output;
+    console.log(myDiv.innerHTML);
 }));

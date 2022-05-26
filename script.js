@@ -16,7 +16,7 @@ function init() { // init function called at page full load. This will listen to
     show_cpu_score.innerHTML = 0;
     show_user_score.innerHTML = 0;
 
-    start.addEventListener('click', () => {
+    start.addEventListener('click', () => { // listen to start button
         if (!game) { // if the game is not started
             game = true;
             user_score = 0;
@@ -29,7 +29,7 @@ function init() { // init function called at page full load. This will listen to
         }
     });
 
-    buttons.forEach(button => button.addEventListener('click', () => {
+    buttons.forEach(button => button.addEventListener('click', () => { // listen to rock, paper and scissors buttons
         if (game) {
             let output = playRound(button.innerHTML);
             document.getElementById("result").innerHTML = output;
@@ -67,18 +67,18 @@ function playRound(user) { // this function gets user option and manages the who
 }
 
 function computerPlay() { // this function gets a random play for cpu
-    let randNum = Math.floor(Math.random() * 3)
+    let randNum = Math.floor(Math.random() * 3) // get a random number between 1 and 3
     
-    return (randNum === 0) ? 'rock': (randNum === 1) ? 'paper': 'scissors';
+    return (randNum === 0) ? 'rock': (randNum === 1) ? 'paper': 'scissors'; // return the random number as one of the three options
 }
 
 function match(cpu, user) { // this function resolves the logic of the match
-    let result = (cpu == user) ? "tie":
-    (cpu == 'rock') ? (user == 'paper') ? 'win' : 'lose' :
-    (cpu == 'paper') ? (user == 'scissors') ? 'win' : 'lose' :
-    (cpu == 'scissors') ? (user == 'rock') ? 'win' : 'lose' : 'lose';
+    let result = (cpu == user) ? "tie": // tie
+    (cpu == 'rock') ? (user == 'paper') ? 'win' : 'lose' : // rock vs paper
+    (cpu == 'paper') ? (user == 'scissors') ? 'win' : 'lose' : // paper vs scissors
+    (cpu == 'scissors') ? (user == 'rock') ? 'win' : 'lose' : 'lose'; // scissors vs rock
 
-    return result;
+    return result; // return win, lose or tie
 }
 
 

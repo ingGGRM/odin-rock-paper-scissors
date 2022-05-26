@@ -34,7 +34,7 @@ const buttons = document.querySelectorAll('button');
 // console.log(buttons);
 
 buttons.forEach(button => button.addEventListener('click', () => {
-    let output = playRound(button.className);
+    let output = playRound(button.innerHTML);
     document.getElementById("result").innerHTML = output;
 
 

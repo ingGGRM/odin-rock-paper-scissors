@@ -62,6 +62,8 @@ body {
     gap: 25px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .user-panel > button {

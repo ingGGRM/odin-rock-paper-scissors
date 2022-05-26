@@ -1,5 +1,46 @@
 //console.log("WELCOME TO ROCK PAPER SCISSORS GAME")
 
+// variables declaration
+const start = document.querySelector('.start-end');
+const buttons = document.querySelectorAll('.user-panel > button');
+let game, user_score, cpu_score;
+
+function init() { // init function called at page full load. This will listen to all clicks
+    game = false;
+
+    start.addEventListener('click', () => {
+        if (!game) { // if the game is not started
+            game = true;
+            user_score = 0;
+            cpu_score = 0;
+            start.textContent = "STOP";
+        } else {
+            //game = false;
+            //start.textContent = "Start Match";
+            location.reload(); // this command will reload the body
+        }
+    });
+
+    buttons.forEach(button => button.addEventListener('click', () => {
+        if (game) {
+            let output = playRound(button.innerHTML);
+            document.getElementById("result").innerHTML = output;
+        
+            if (output == 'win') user_score++;
+            else if (output == 'lose') cpu_score++;
+
+            console.log("User: " + user_score + "   Cpu: " + cpu_score);
+            
+            if (cpu_score == 5 || user_score == 5) {
+                round = 0;
+                game = false;
+
+                console.log((cpu_score == 5) ? "The CPU Won !!" : "You Won !!");
+            }
+        }
+    }));
+}
+
 function playRound(user) { // this function gets user option and manages the whole gameplay
     //e.stopPropagation();
     //let user = e.classList.value;
@@ -30,23 +71,10 @@ function match(cpu, user) {
     return result;
 }
 
-const start = document.querySelector('.start-end');
-const buttons = document.querySelectorAll('.user-panel > button');
 //console.log(start);
 //console.log(buttons);
+console.log("la variable game es: " + game);
 
-start.addEventListener('click', () => {
-    let game = true;
-    let round = 0;
 
-    while (round < 5) {
-        //console.log(round);
-        buttons.forEach(button => button.addEventListener('click', () => {
-            let output = playRound(button.innerHTML);
-            document.getElementById("result").innerHTML = output;
 
-            round++;
-        }));
-    }
-    //console.log("OUTTTTTT");
-});
+

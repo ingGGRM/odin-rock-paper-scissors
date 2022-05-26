@@ -4,6 +4,8 @@ const start = document.querySelector('.start-end');
 const buttons = document.querySelectorAll('.user-panel > button');
 //console.log(start);
 //console.log(buttons);
+const show_cpu_score = document.querySelector('.score > .score-cpu > .score-value');
+const show_user_score = document.querySelector('.score > .score-user > .score-value');
 
 let game, user_score, cpu_score;
 
@@ -11,6 +13,8 @@ let game, user_score, cpu_score;
 
 function init() { // init function called at page full load. This will listen to all clicks
     game = false;
+    show_cpu_score.innerHTML = 0;
+    show_user_score.innerHTML = 0;
 
     start.addEventListener('click', () => {
         if (!game) { // if the game is not started
@@ -34,12 +38,14 @@ function init() { // init function called at page full load. This will listen to
             else if (output == 'lose') cpu_score++;
 
             console.log("User: " + user_score + "   Cpu: " + cpu_score);
-            
+
+            show_cpu_score.innerHTML = cpu_score;
+            show_user_score.innerHTML = user_score;
+
             if (cpu_score == 5 || user_score == 5) {
                 game = false;
                 start.textContent = "Start Match";
                 console.log((cpu_score == 5) ? "The CPU Won !!" : "You Won !!");
-                
             }
         }
     }));

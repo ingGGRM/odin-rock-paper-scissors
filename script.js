@@ -1,9 +1,13 @@
-//console.log("WELCOME TO ROCK PAPER SCISSORS GAME")
+/* variables declaration */
 
-// variables declaration
 const start = document.querySelector('.start-end');
 const buttons = document.querySelectorAll('.user-panel > button');
+//console.log(start);
+//console.log(buttons);
+
 let game, user_score, cpu_score;
+
+/* function declarations */
 
 function init() { // init function called at page full load. This will listen to all clicks
     game = false;
@@ -14,7 +18,7 @@ function init() { // init function called at page full load. This will listen to
             user_score = 0;
             cpu_score = 0;
             start.textContent = "STOP";
-        } else {
+        } else { // if the game is starting
             //game = false;
             //start.textContent = "Start Match";
             location.reload(); // this command will reload the body
@@ -32,10 +36,10 @@ function init() { // init function called at page full load. This will listen to
             console.log("User: " + user_score + "   Cpu: " + cpu_score);
             
             if (cpu_score == 5 || user_score == 5) {
-                round = 0;
                 game = false;
-
+                start.textContent = "Start Match";
                 console.log((cpu_score == 5) ? "The CPU Won !!" : "You Won !!");
+                
             }
         }
     }));
@@ -53,7 +57,7 @@ function playRound(user) { // this function gets user option and manages the who
     let result = match(cpu.toLowerCase(), user.toLowerCase());
     //console.log((result != 'TIE') ? "!!! User " + result + " !!!" : "!!! Result was a TIE !!!");
 
-    return result;
+    return result; // this function returns the result of the match
 }
 
 function computerPlay() { // this function gets a random play for cpu
@@ -62,7 +66,7 @@ function computerPlay() { // this function gets a random play for cpu
     return (randNum === 0) ? 'rock': (randNum === 1) ? 'paper': 'scissors';
 }
 
-function match(cpu, user) {
+function match(cpu, user) { // this function resolves the logic of the match
     let result = (cpu == user) ? "tie":
     (cpu == 'rock') ? (user == 'paper') ? 'win' : 'lose' :
     (cpu == 'paper') ? (user == 'scissors') ? 'win' : 'lose' :
@@ -70,10 +74,6 @@ function match(cpu, user) {
 
     return result;
 }
-
-//console.log(start);
-//console.log(buttons);
-console.log("la variable game es: " + game);
 
 
 

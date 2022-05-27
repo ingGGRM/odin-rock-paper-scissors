@@ -25,14 +25,20 @@
         </div>
         
         <div class="user-panel">
-            <div class="user-buttons">
+            <div class="hidden user-buttons">
                 <button>ROCK</button>
                 <button>PAPER</button>
                 <button>SCISSORS</button>
             </div>
-            <h3 class="vs">VS</h3>
-            <h4 class="cpu-option">CPU<h4>
-            <div id="result">RESULT</div>
+            <div class="vs">
+                <div>USER</div>
+                <img src="./vs.png" alt="vs image" height="100px" width="100px">
+                <div>CPU</div>
+            </div>
+            <div id="result">
+                <img class="hidden" src="./winner.jpg" alt="winner" height="100px" width="auto" style="border-radius: 10px;">
+                <img class="hidden" src="./looser.png" alt="looser" height="150px" width="auto" style="transform: rotate(9.5deg); border-radius: 10px;">
+            </div>
         </div>
     </div>
 </body>

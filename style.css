@@ -67,7 +67,8 @@ body {
     align-items: center;
 }
 
-.user-panel > * {
+.user-panel > :nth-child(1),
+.user-panel > :nth-child(2) {
     flex: 0 0 auto;
     height: 50px;
     width: 50%;
@@ -76,10 +77,9 @@ body {
 
 .user-buttons {
     margin-top:15px;
-    border: 1px solid black;
-    display: flex;
     gap: 25px;
     height: 80px;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -95,7 +95,7 @@ body {
     height: 60px;
     border-radius: 50%;
     /*box-shadow: -2px -1px, 2px 1px, -2px 1px, 2px -1px;*/
-    transition: all .5s ease;
+    transition: all .2s ease;
 }
 
 .clicked {
@@ -104,13 +104,14 @@ body {
 }
 
 .vs {
-    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18pt;
+    font-style: oblique;
+    color: crimson;
 }
 
-.cpu-option {
-    border: 1px solid black;
-}
-
-#result {
-    border: 1px solid black;
+.hidden {
+    display: none;
 }

@@ -55,6 +55,7 @@ body {
 
 .user-panel {
     border: 1px solid black;
+    background-image: linear-gradient(45deg, darkcyan, white, darkcyan);
     flex: 1 1 auto;
     margin-top: 15px;
     margin-bottom: 25px;
@@ -62,11 +63,54 @@ body {
     gap: 25px;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.user-panel > * {
+    flex: 0 0 auto;
+    height: 50px;
+    width: 50%;
+    margin: auto;
+}
+
+.user-buttons {
+    margin-top:15px;
+    border: 1px solid black;
+    display: flex;
+    gap: 25px;
+    height: 80px;
     justify-content: center;
     align-items: center;
 }
 
-.user-panel > button {
+.user-buttons > button {
+    background-image: linear-gradient(30deg, darkgray, white);
+    border: 2px solid darkorange;
+    font-size: 10pt;
+    text-align: center;
+    color: rgb(40, 68, 68);
+    font-weight: bold;
+    width: 80px;
+    height: 60px;
+    border-radius: 50%;
+    /*box-shadow: -2px -1px, 2px 1px, -2px 1px, 2px -1px;*/
+    transition: all .5s ease;
+}
+
+.clicked {
+    transform: scale(1.1);
+    box-shadow: -2px -1px 1rem #ffc600, 2px 1px 1rem #ffc600, -2px 1px 1rem #ffc600, 2px -1px 1rem #ffc600;
+}
+
+.vs {
     border: 1px solid black;
-    min-width: 80px;
+}
+
+.cpu-option {
+    border: 1px solid black;
+}
+
+#result {
+    border: 1px solid black;
 }

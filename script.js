@@ -1,9 +1,10 @@
 /* variables declaration */
 
 const start = document.querySelector('.start-end');
-const buttons = document.querySelectorAll('.user-panel > button');
+const buttons = document.querySelectorAll('.user-buttons > button');
 //console.log(start);
 //console.log(buttons);
+const cpu_option = document.querySelector(".cpu-option");
 const show_cpu_score = document.querySelector('.score > .score-cpu > .score-value');
 const show_user_score = document.querySelector('.score > .score-user > .score-value');
 
@@ -31,6 +32,7 @@ function init() { // init function called at page full load. This will listen to
 
     buttons.forEach(button => button.addEventListener('click', () => { // listen to rock, paper and scissors buttons
         if (game) {
+            button.classList.add("clicked");
             let output = playRound(button.innerHTML);
             document.getElementById("result").innerHTML = output;
         
@@ -49,7 +51,15 @@ function init() { // init function called at page full load. This will listen to
             }
         }
     }));
+
+    buttons.forEach(button => button.addEventListener('transitionend', removeTransition));
 }
+
+function removeTransition(e) {
+    if (e.propertyName !== 'transform') return; // skip if itś not a transform
+    // console.log(e.propertyName);
+    this.classList.remove('clicked');
+  }
 
 function playRound(user) { // this function gets user option and manages the whole gameplay
     //e.stopPropagation();
@@ -59,6 +69,7 @@ function playRound(user) { // this function gets user option and manages the who
     
     let cpu = computerPlay();
     //console.log("Cpu: " + cpu);
+    cpu_option.innerHTML = cpu;
 
     let result = match(cpu.toLowerCase(), user.toLowerCase());
     //console.log((result != 'TIE') ? "!!! User " + result + " !!!" : "!!! Result was a TIE !!!");
